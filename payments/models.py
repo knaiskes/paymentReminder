@@ -13,6 +13,7 @@ class Payment(models.Model):
     description = models.TextField(max_length=150, blank=True)
     amount = models.FloatField()
     obliged = models.ForeignKey(Obliged, on_delete=models.CASCADE)
+    date = models.DateField()
 
     def __str__(self):
         return self.name
