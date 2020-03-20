@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from payments.views import HomeView
 
 urlpatterns = [
+    path('', HomeView),
     path('payments/', include('payments.urls', namespace='payments')),
     path('admin/', admin.site.urls),
 ]
