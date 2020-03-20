@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Payment
 
-# Create your views here.
+def payments_homepage(request):
+    payments_list = Payment.objects.all()
+    context = {
+        'payments_list': payments_list,
+    }
+    return render(request, 'payments/home.html', context)
