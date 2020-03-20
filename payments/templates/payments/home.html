@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1> Payments page </h1>
+
+{% for payment in payments_list %}
+<h1>{{ payment.name }} </h1>
+
+{% endfor %}
+
+{% endblock content %}
