@@ -7,3 +7,11 @@ def HomeView(request):
         'payments_list': payments_list,
     }
     return render(request, 'payments/home.html', context)
+
+
+def payment_by_id(request, id):
+    payment = get_object_or_404(Payment, id=id)
+    context = {
+        'payment': payment,
+    }
+    return render(request, 'payments/payment.html', context)
