@@ -63,3 +63,17 @@ class TestPaymentById(TestCase):
                                            kwargs={'id': self.payment.id}))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'payments/payment.html')
+
+class TestObligedsList(TestCase):
+    def test_view_url_list_exists(self):
+        response = self.client.get('/payments/obligeds/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_accessible_by_name(self):
+        response = self.client.get(reverse('payments:obligeds_list'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_template(self):
+        response = self.client.get(reverse('payments:obligeds_list'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'payments/obligeds.html')
