@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1> Obligeds page </h1>
+
+{% for obliged in obligeds_list %}
+<h1><a href='{{ obliged.get_obliged_url }}'>{{ obliged.full_name }}</a></h1>
+{% endfor %}
+
+{% endblock content %}
