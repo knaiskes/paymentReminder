@@ -77,3 +77,25 @@ class TestObligedsList(TestCase):
         response = self.client.get(reverse('payments:obligeds_list'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'payments/obligeds.html')
+
+class TestObligedById(TestCase):
+    def setUp(self):
+        self.obliged =Obliged.objects.create(
+            full_name='obliged1', email='obliged1@test.com'
+        )
+
+    def test_valid_id(self):
+        self.assertEqual(self.obliged.full_name, 'obliged1')
+
+    def test_invalid_id(self):
+        with self.assertRaises(Obliged.DoesNotExist):
+            Obliged.objects.get(id=2)
+
+    def test_view_url_list_exists(self):
+        response = self.client.get(self.obliged.get_obliged_url())
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_template(self):
+        response = self.client.get(self.obliged.get_obliged_url())
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'payments/obliged.html')
