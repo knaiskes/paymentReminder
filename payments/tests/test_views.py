@@ -1,6 +1,5 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from payments.views import payments_list
 from payments.models import Obliged, Payment
 
 class TestPaymentsList(TestCase):
