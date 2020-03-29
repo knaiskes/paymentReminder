@@ -9,4 +9,4 @@ DAYS_CHOICES = (
 )
 
 class DateHistorySearchForm(forms.Form):
-    days = forms.ChoiceField(choices = DAYS_CHOICES)
+    days = forms.ChoiceField(help_text="Select days: ",choices = DAYS_CHOICES)
