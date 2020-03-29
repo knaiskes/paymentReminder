@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1> History Page: expired payments </h1>
+
+{% for payment in payments_history_list %}
+<h1>{{ payment }} </h1>
+{% endfor %}
+
+<form name='\historyForm' method = "POST">
+  {% csrf_token %}
+  {{ form }}
+  <input type = "submit" value = "Submit">
+  </form>
+
+{% endblock content %}
