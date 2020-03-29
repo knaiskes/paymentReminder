@@ -37,20 +37,13 @@ def history(request):
     payments_history_list = []
     form = DateHistorySearchForm(request.POST or None)
 
-    range_options = { 'seven': 7,'thirty': 30, 'sixty': 60, 'ninety': 90 }
-
     if form.is_valid():
         import datetime
-
         today = datetime.date.today()
 
-        try:
-            selected_option = range_options[form.cleaned_data['days']]
-        except(KeyError):
-            selected_option = today
+        if form.get_selected_option() != today:
+            search_range = today + datetime.timedelta(- form.get_selected_option())
 
-        if selected_option != today:
-            search_range = today + datetime.timedelta(- selected_option)
             payments_history_list = Payment.objects.filter(
                 date__range=[search_range, today])
 
