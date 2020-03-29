@@ -36,13 +36,23 @@ def obliged_by_id(request, id):
 def history(request):
     payments_history_list = []
     form = DateHistorySearchForm(request.POST or None)
+
     range_options = {
         #TODO: import date and use its functions rather than hard coded values
         'week': 7,'month': 30, 'two_months': 60, 'three_months': 90
     }
+
     if form.is_valid():
-        selected_option = form.cleaned_data['days']
+        import datetime
+
+        today = datetime.date.today()
+
+        try:
+            selected_option = range_options[form.cleaned_data['days']]
+        except(KeyError):
+            selected_option = today
         print(selected_option)
+
         context = { 'payments_history_list': payments_history_list, }
         redirect('payments/history.html', context)
 
