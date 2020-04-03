@@ -1,0 +1,25 @@
+html {
+    background-color: #FAF9F7;
+    position: relative;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body { margin: 0; }
+
+.navbar {
+    overflow: hidden;
+    background-color: #333333;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-top: 5px solid red;
+}
+
+.navbar a:hover { background-color: #E59400; }
