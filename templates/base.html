@@ -5,6 +5,13 @@
     <title>Payment Reminder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <div class="navbar">
+      <a href="{% url 'payments:payments_list' %}"> Home </a>
+      <a href="{% url 'payments:obligeds_list' %}"> Obligeds </a>
+      <a href="{% url 'payments:history' %}"> History </a>
+    </div>
+
   </head>
 
   <body>
