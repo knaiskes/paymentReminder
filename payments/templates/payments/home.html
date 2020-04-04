@@ -3,9 +3,22 @@
 
 <h1> Payments page </h1>
 
-{% for payment in payments_list %}
-<h1>{{ payment.name }} </h1>
-
-{% endfor %}
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Obliged</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>More</th>
+  </tr>
+  {% for payment in payments_list %}
+  <tr>
+  <td>{{ payment.name }}</td>
+  <td>{{ payment.obliged }}</td>
+  <td>{{ payment.amount }}</td>
+  <td>{{ payment.date }}</td>
+  </tr>
+  {% endfor %}
+</table>
 
 {% endblock content %}
