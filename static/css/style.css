@@ -23,3 +23,24 @@ body { margin: 0; }
 }
 
 .navbar a:hover { background-color: #E59400; }
+
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 100%;
+  }
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 960px;
+
+    padding: 0 1.0875rem 1.45rem;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex-grow: 1;
+}
