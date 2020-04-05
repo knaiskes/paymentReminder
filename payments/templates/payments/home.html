@@ -9,7 +9,6 @@
     <th>Obliged</th>
     <th>Amount</th>
     <th>Date</th>
-    <th>More</th>
   </tr>
   {% for payment in payments_list %}
   <tr>
@@ -17,6 +16,7 @@
   <td>{{ payment.obliged }}</td>
   <td>{{ payment.amount }}</td>
   <td>{{ payment.date }}</td>
+  <td><a href='{{payment.get_payment_url }}'>More</a></td>
   </tr>
   {% endfor %}
 </table>
