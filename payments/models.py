@@ -19,5 +19,8 @@ class Payment(models.Model):
     obliged = models.ForeignKey(Obliged, on_delete=models.CASCADE)
     date = models.DateField()
 
+    def get_payment_url(self):
+        return reverse('payments:payment_by_id', args=[self.id])
+
     def __str__(self):
         return self.name

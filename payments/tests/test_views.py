@@ -49,18 +49,15 @@ class TestPaymentById(TestCase):
             Payment.objects.get(id=2)
 
     def test_view_url_exists(self):
-        response = self.client.get(reverse('payments:payment_by_id',
-                                           kwargs={'id': self.payment.id}))
+        response = self.client.get(self.payment.get_payment_url())
         self.assertEqual(response.status_code, 200)
 
     def test_view_accessible_by_name(self):
-        response = self.client.get(reverse('payments:payment_by_id',
-                                            kwargs={'id': self.payment.id}))
+        response = self.client.get(self.payment.get_payment_url())
         self.assertEqual(response.status_code, 200)
 
     def test_view_template(self):
-        response = self.client.get(reverse('payments:payment_by_id',
-                                           kwargs={'id': self.payment.id}))
+        response = self.client.get(self.payment.get_payment_url())
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'payments/payment.html')
 
