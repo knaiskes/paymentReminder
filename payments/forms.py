@@ -9,7 +9,10 @@ DAYS_CHOICES = (
 )
 
 class DateHistorySearchForm(forms.Form):
-    days = forms.ChoiceField(label='days', help_text="Select days: ",choices = DAYS_CHOICES)
+    days = forms.ChoiceField(label='days', help_text="Select days: ",
+                             choices = DAYS_CHOICES,
+                             widget=forms.Select(attrs={
+                                 'onchange': 'submit();'}))
 
     def get_selected_option(self):
         import datetime
