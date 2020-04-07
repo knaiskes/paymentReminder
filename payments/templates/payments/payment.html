@@ -3,6 +3,24 @@
 
 <h1> Payment page </h1>
 
-<h1> {{ payment.name }} </h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Obliged</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+  <td>{{ payment.name }}</td>
+  <td>{{ payment.payment_code }} </td>
+  <td>{{ payment.obliged }}</td>
+  <td>{{ payment.amount }}</td>
+  <td>{{ payment.date }}</td>
+  <td>{{ payment.description }}</td>
+  <td></td>
+  </tr>
+</table>
 
 {% endblock content %}
