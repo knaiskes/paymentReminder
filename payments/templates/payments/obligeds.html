@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1> Obligeds page </h1>
+<style>
+  td, th { text-align: center; }
+</style>
 
-<table>
+<h1> Select obliged </h1>
+
+<table style="text-align:center;">
   <tr>
-    <th>Name</th>
+    <th>Full Name</th>
   </tr>
   {% for obliged in obligeds_list %}
   <tr>
