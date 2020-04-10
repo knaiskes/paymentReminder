@@ -120,3 +120,20 @@ td:last-child {
   font-size: 2.25rem;
   line-height: 1.1;
 }
+
+.custom-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+
+    background: #F9F9F9;
+    border: 1px solid #010101;
+    border-radius: 10px;
+    width: 20%;
+    padding: 10px;
+    font-size: 17px;
+    color: #3F3F3F;
+    cursor: pointer;
+}
