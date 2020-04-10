@@ -3,9 +3,18 @@ from .models import Payment, Obliged
 from .forms import DateHistorySearchForm
 
 def payments_list(request):
-    payments_list = Payment.objects.all()
+    import datetime
+    # Get current week's payments
+    today = datetime.date.today()
+    week_start = today - datetime.timedelta(days=today.weekday())
+    week_end = week_start + datetime.timedelta(days=6)
+
+    payments_list = Payment.objects.filter(
+        date__range=[week_start, week_end]
+    )
     context = {
         'payments_list': payments_list,
+        'today': today,
     }
     return render(request, 'payments/home.html', context)
 

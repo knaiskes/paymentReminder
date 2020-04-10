@@ -2,7 +2,6 @@
 {% block content %}
 
 <h1 class="custom-h1"> Payments for this week </h1>
-
 <table>
   <tr>
     <th>Name</th>
@@ -12,13 +11,21 @@
     <th>More</th>
   </tr>
   {% for payment in payments_list %}
-  <tr>
+
+  {% if today > payment.date %}
+  <tr class="oldPayments">
+  {% else %}
+  <tr class="futurePayments">
+  {% endif %}
+
   <td>{{ payment.name }}</td>
   <td>{{ payment.obliged }}</td>
   <td>{{ payment.amount }}</td>
   <td>{{ payment.date }}</td>
   <td><a href='{{payment.get_payment_url }}'>Click</a></td>
   </tr>
+
+  </div>
   {% endfor %}
 </table>
 
