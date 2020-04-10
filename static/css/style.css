@@ -137,3 +137,7 @@ td:last-child {
     color: #3F3F3F;
     cursor: pointer;
 }
+
+.futurePayments { color: #008744; }
+
+.oldPayments { color: #d62d20; }
