@@ -7,5 +7,5 @@ class DateHistorySearchFormTest(TestCase):
 
     def test_days_field_label(self):
         label = self.form.fields['days'].label == None or \
-            self.form.fields['days'].label =='days'
+            self.form.fields['days'].label =='Date range'
         self.assertTrue(label)
