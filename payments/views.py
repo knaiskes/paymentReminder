@@ -9,7 +9,7 @@ def payments_list(request):
     week_start = today - datetime.timedelta(days=today.weekday())
     week_end = week_start + datetime.timedelta(days=6)
 
-    payments_list = Payment.objects.filter(
+    payments_list = Payment.objects.order_by('date').filter(
         date__range=[week_start, week_end]
     )
     context = {
@@ -53,7 +53,7 @@ def history(request):
         if form.get_selected_option() != today:
             search_range = today + datetime.timedelta(- form.get_selected_option())
 
-            payments_history_list = Payment.objects.filter(
+            payments_history_list = Payment.objects.order_by('date').filter(
                 date__range=[search_range, today])
 
         context = { 'payments_history_list': payments_history_list, }
