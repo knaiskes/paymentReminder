@@ -9,4 +9,5 @@ urlpatterns = [
     path('obligeds/',views.obligeds_list, name='obligeds_list'),
     path('obliged/<int:id>/',views.obliged_by_id, name='obliged_by_id'),
     path('history/',views.history, name='history'),
+    path('future/',views.future, name='future'),
 ]
