@@ -80,6 +80,10 @@ table {
   width: 100%;
 }
 
+th {
+    background-color: #3B5998;
+    color: #FFFFFF;
+}
 td,
 th {
   text-align: left;
