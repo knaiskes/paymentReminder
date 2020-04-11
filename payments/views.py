@@ -49,12 +49,16 @@ def history(request):
     if form.is_valid():
         import datetime
         today = datetime.date.today()
+        obliged = form.cleaned_data.get('obligeds')
 
         if form.get_selected_option() != today:
             search_range = today + datetime.timedelta(- form.get_selected_option())
-
-            payments_history_list = Payment.objects.order_by('date').filter(
-                date__range=[search_range, today])
+            if obliged == None:
+                payments_history_list = Payment.objects.order_by('date').filter(
+                    date__range=[search_range, today])
+            else:
+                payments_history_list = Payment.objects.order_by('date').filter(
+                    date__range=[search_range, today], obliged=obliged)
 
         context = { 'payments_history_list': payments_history_list, }
 
