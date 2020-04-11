@@ -9,7 +9,7 @@ DAYS_CHOICES = (
     ('ninety', '90 days'),
 )
 
-class DateHistorySearchForm(forms.Form):
+class DateSearchForm(forms.Form):
     days = forms.ChoiceField(label='Date range',
                 choices = DAYS_CHOICES,
                 widget=forms.Select(attrs={

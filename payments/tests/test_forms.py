@@ -1,9 +1,9 @@
 from django.test import TestCase
-from payments.forms import DateHistorySearchForm
+from payments.forms import DateSearchForm
 
-class DateHistorySearchFormTest(TestCase):
+class DateSearchFormTest(TestCase):
     def setUp(self):
-        self.form = DateHistorySearchForm()
+        self.form = DateSearchForm()
 
     def test_days_field_label(self):
         label = self.form.fields['days'].label == None or \

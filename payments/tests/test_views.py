@@ -110,3 +110,17 @@ class TestHistoryView(TestCase):
         response = self.client.get(reverse('payments:history'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'payments/history.html')
+
+class TestFutureView(TestCase):
+    def test_view_url_exists(self):
+        response = self.client.get('/payments/future/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_accessible_by_name(self):
+        response = self.client.get(reverse(('payments:future')))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_template(self):
+        response = self.client.get(reverse('payments:future'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'payments/future.html')

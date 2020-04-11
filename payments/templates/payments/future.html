@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="custom-h1"> Search for future payments </h1>
+
+<form name='\futureForm' method = "POST">
+  {% csrf_token %}
+  <p>
+    {{ form }}
+    </p>
+  <noscript><input type = "submit" value = "Submit"></noscript>
+  </form>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Obliged</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>More</th>
+  </tr>
+  {% for payment in payments_future_list %}
+  <tr>
+  <td>{{ payment.name }}</td>
+  <td>{{ payment.obliged }}</td>
+  <td>{{ payment.amount }}</td>
+  <td>{{ payment.date }}</td>
+  <td><a href='{{payment.get_payment_url }}'>Click</a></td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock content %}
