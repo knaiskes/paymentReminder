@@ -6,7 +6,9 @@
 
 <form name='\historyForm' method = "POST">
   {% csrf_token %}
-  {{ form }}
+  <p>
+    {{ form }}
+    </p>
   <noscript><input type = "submit" value = "Submit"></noscript>
   </form>
 
