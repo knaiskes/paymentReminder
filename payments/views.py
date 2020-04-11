@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Payment, Obliged
-from .forms import DateHistorySearchForm
+from .forms import DateSearchForm
 
 def payments_list(request):
     import datetime
@@ -44,7 +44,7 @@ def obliged_by_id(request, id):
 
 def history(request):
     payments_history_list = []
-    form = DateHistorySearchForm(request.POST or None)
+    form = DateSearchForm(request.POST or None)
 
     if form.is_valid():
         import datetime
@@ -70,3 +70,33 @@ def history(request):
     }
 
     return render(request, 'payments/history.html', context)
+
+
+def future(request):
+    payments_future_list = []
+    form = DateSearchForm(request.POST or None)
+
+    if form.is_valid():
+        import datetime
+        today = datetime.date.today()
+        obliged = form.cleaned_data.get('obligeds')
+
+        if form.get_selected_option() != today:
+            search_range = today + datetime.timedelta(form.get_selected_option())
+            if obliged == None:
+                payments_future_list = Payment.objects.order_by('date').filter(
+                    date__range=[today, search_range])
+            else:
+                payments_future_list = Payment.objects.order_by('date').filter(
+                    date__range=[today, search_range], obliged=obliged)
+
+        context = { 'payments_future_list': payments_future_list, }
+
+        redirect('payments/future.html', context)
+
+    context = {
+        'payments_future_list': payments_future_list,
+        'form': form,
+    }
+
+    return render(request, 'payments/future.html', context)
