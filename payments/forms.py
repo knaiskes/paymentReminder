@@ -1,4 +1,5 @@
 from django import forms
+from .models import Obliged
 
 DAYS_CHOICES = (
     ('', '-----'),
@@ -10,9 +11,16 @@ DAYS_CHOICES = (
 
 class DateHistorySearchForm(forms.Form):
     days = forms.ChoiceField(label='Date range',
-                             choices = DAYS_CHOICES,
-                             widget=forms.Select(attrs={
-                             'class': 'custom-select',  'onchange': 'submit();'}))
+                choices = DAYS_CHOICES,
+                widget=forms.Select(attrs={
+                'class': 'custom-select',  'onchange': 'submit();'})
+    )
+    obligeds = forms.ModelChoiceField(label='Obligeds',
+                    empty_label='All', required=False,
+                    queryset=Obliged.objects.all(),
+                    widget=forms.Select(attrs={
+                    'class': 'custom-select', 'onchange': 'submit();'})
+    )
 
     def get_selected_option(self):
         import datetime
