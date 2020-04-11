@@ -15,7 +15,7 @@ class DateHistorySearchForm(forms.Form):
                 widget=forms.Select(attrs={
                 'class': 'custom-select',  'onchange': 'submit();'})
     )
-    obligeds = forms.ModelChoiceField(label='Obligeds',
+    obligeds = forms.ModelChoiceField(label='Select obliged',
                     empty_label='All', required=False,
                     queryset=Obliged.objects.all(),
                     widget=forms.Select(attrs={
