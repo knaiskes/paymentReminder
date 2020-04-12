@@ -39,7 +39,7 @@ class TestPaymentById(TestCase):
             name='testName', payment_code='100-200-300', description='test',
             amount=20.32, obliged=self.obliged, date='2020-02-02'
         )
-        self.payment = Payment.objects.get(id=1)
+        self.payment = Payment.objects.get(name='testName')
 
     def test_valid_id(self):
         self.assertEqual(self.payment.name, 'testName')

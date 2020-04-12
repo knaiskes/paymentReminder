@@ -11,6 +11,19 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from json import load
+
+try:
+    with open('config.json') as json_file:
+        data = load(json_file)
+        static_ip = data['server']['staticIP']
+        db_user =     data['database']['user']
+        db_password = data['database']['password']
+        db_name =     data['database']['dbName']
+        db_host =     data['database']['host']
+        db_port =     data['database']['port']
+except FileNotFoundError:
+    print('settings.py: could not open config.json')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +38,7 @@ SECRET_KEY = '*9r#$r0093^y4csb11k+u4*lqlchs9l4wxpff+bq!9cwko+eah'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'static_ip']
 
 
 # Application definition
@@ -76,8 +89,16 @@ WSGI_APPLICATION = 'paymentReminder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+        # postgres config
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': db_name,
+        'USER': db_user,
+        'PASSWORD': db_password,
+        'HOST': db_host,
+        'PORT': db_port,
     }
 }
 
