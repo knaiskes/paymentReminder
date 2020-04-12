@@ -23,6 +23,7 @@ def payment_by_id(request, id):
     payment = get_object_or_404(Payment, id=id)
     context = {
         'payment': payment,
+        'title': 'Payment description',
     }
     return render(request, 'payments/payment.html', context)
 
@@ -30,6 +31,7 @@ def obligeds_list(request):
     obligeds_list = Obliged.objects.all()
     context = {
         'obligeds_list': obligeds_list,
+        'title': 'Obligeds List',
     }
     return render(request, 'payments/obligeds.html', context)
 
@@ -38,7 +40,8 @@ def obliged_by_id(request, id):
     payments_list = Payment.objects.filter(obliged=id)
     context = {
         'obliged': obliged,
-        'payments_list': payments_list
+        'payments_list': payments_list,
+        'title': 'Payments by obliged',
     }
     return render(request, 'payments/obliged.html', context)
 
@@ -67,6 +70,7 @@ def history(request):
     context = {
         'payments_history_list': payments_history_list,
         'form': form,
+        'title': 'Search for old payments',
     }
 
     return render(request, 'payments/history.html', context)
@@ -97,6 +101,7 @@ def future(request):
     context = {
         'payments_future_list': payments_future_list,
         'form': form,
+        'title': 'Search for future payments',
     }
 
     return render(request, 'payments/future.html', context)
