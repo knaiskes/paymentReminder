@@ -32,3 +32,5 @@ Start server
 ```
 $ python manage.py runserver
 ```
+
+## Dependencies
