@@ -44,6 +44,7 @@ Visit
 ```
 localhost:8000/
 ```
+![paymentReminder](https://user-images.githubusercontent.com/6069054/79163435-bb35bd00-7de7-11ea-9927-bc58cb4859f6.gif)
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
