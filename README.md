@@ -14,6 +14,11 @@ Clone repo
 ```
 $ git clone git@github.com:KNaiskes/paymentReminder.git
 ```
+Create and activate virtual enviroment
+```
+$ python -m venv venv
+$ source venv/bin/activate
+```
 Install requirements
 ```
 $ cd paymentReminder
