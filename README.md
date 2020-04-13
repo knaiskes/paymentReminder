@@ -1,8 +1,11 @@
 ![Django CI](https://github.com/KNaiskes/paymentReminder/workflows/Django%20CI/badge.svg)
 
 # paymentReminder
-A simple Web application to keep track of future (and past) payments
+A web application to keep track of future and past payments
 
+## Dependencies
+
+- [Python 3](https://www.python.org/)
 
 ## Quick Start
 
@@ -19,7 +22,7 @@ $ pip install -r requirements.txt
 
 Migrate database models
 ```
-$ python manage.py makemigrations
+$ python manage.py makemigrations payments
 $ python manage.py migrate
 ```
 
@@ -32,3 +35,10 @@ Start server
 ```
 $ python manage.py runserver
 ```
+Visit
+```
+localhost:8000/
+```
+
+## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
